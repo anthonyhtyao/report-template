@@ -1,0 +1,22 @@
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%  Modèle rapport         %%
+    %%  Introduction           %%
+    %%  Version 2014.08.26     %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Châpeau
+\ifbool{numeroIntroConclu}{
+	\section{\nomIntro}
+	\ifbool{rectoVerso}{\fancyhead[LE,RO]{\nomIntro}}{\fancyhead[RE,RO]{\nomIntro}}
+}{
+	\clearpage
+	\section*{\nomIntro}
+	\addcontentsline{toc}{section}{\nomIntro}
+	\ifbool{rectoVerso}{\fancyhead[LE,RO]{\nomIntro}}{\fancyhead[RE,RO]{\nomIntro}}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Texte
+
+
+
+ABCDEFG\cite{lowry1951protein}

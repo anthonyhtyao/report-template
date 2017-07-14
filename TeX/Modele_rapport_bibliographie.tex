@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%  Modèle rapport         %%
+    %%  Bibliographie          %%
+    %%  Version 2016.04.10     %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Châpeau
+\clearpage
+\selectlanguage{english}
+\renewcommand{\refname}{\nomBiblio} %% Doit être après \selectlanguage{English}
+\addcontentsline{toc}{section}{\nomBiblio}
+\ifbool{rectoVerso}{\fancyhead[LE,RO]{\nomBiblio}}{\fancyhead[RE,RO]{\nomBiblio}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Texte
+
+
+\ifnumequal{\entreeBiblio}{1}{ %% Bibliographie avec .bib
+	\bibliography{biblio}
+}{}
+
+\ifnumequal{\entreeBiblio}{2}{ %% Bibliographie indépendante
+	\begin{thebibliography}{99}
+
+    \bibitem[NomDeLAuteur (1999)]{Revue}
+        NomDeLAuteur, Prenom.
+        \emph{NomDeLArticle}.
+        NomDeLaRuvue, Vol.XX, No.YY, p.ZZ.
+        NomDeLEdition.
+        Année.
+
+    \bibitem{Livre}
+        NomDeLAuteur, Prenom.
+        \emph{NomDuLivre}.
+        NomDeLEdition.
+        Année.
+
+    \bibitem{Conference}
+        NomDeLAuteur, Prenom.
+        \emph{TitreDuSujet}.
+        NomDeLaConference.
+        Lieu.
+        Année.
+
+	\end{thebibliography}
+}{}

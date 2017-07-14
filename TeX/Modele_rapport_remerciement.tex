@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%  Modèle rapport         %%
+    %%  Remerciement           %%
+    %%  Version 2014.08.26     %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Châpeau
+\ifbool{numeroRemerci}{
+	\section{\nomRemerci}
+	\ifbool{rectoVerso}{\fancyhead[LE,RO]{\nomRemerci}}{\fancyhead[RE,RO]{\nomRemerci}}
+}{
+	\clearpage
+	\section*{\nomRemerci}
+	\addcontentsline{toc}{section}{\nomRemerci}
+	\ifbool{rectoVerso}{\fancyhead[LE,RO]{\nomRemerci}}{\fancyhead[RE,RO]{\nomRemerci}}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Texte
+
+
+    Le stage que j'ai effectué n'aurait pu être mené à bien sans l'aide précieuse que plusieurs interlocuteurs ont apportée au cours de mon travail.
+
+    J'exprime d'abord mes remerciements à mon ordinateur Caroline pour son travail assidu et sa performance impeccable. Elle reste toujours à mon côté malgré un accident de chute libre à partir de 1 mètre du sol. Pour son sacrifice, ses peines et son dévouement, je lui suis très reconnaissant.
+
+    Je voudrais remercier arXiv.org pour avoir assuré la partie théorique de mon travail. Il a eu la gentillesse d'accroître ma liste de la bibliographie à étudier de façon exponentielle. Pour son zèle en éclaircissement du sujet, je souhaite manifester ma pleine gratitude.
+
+    Je remercie sincèrement Facebook pour son divertissement personnalisé. Son interface bleue m'a secouru plusieurs fois de la fenêtre noire de la terminale où je me noyais. Ses efforts en distraction tout au long du stage m'ont été indispensables.
+
+    Je remercie davantage la collection Folio pour ses {\oe}uvres riches d'intérêts, sans quoi je serais mort d'ennui pendant les grèves mensuelles et les accidents hebdomadaires de l'ensemble du réseau ferré parisien. Pour son esprit sacré de combattre le transport en commun à Paris, je lui exprime ma considération distinguée.
+
+    Je voudrais également remercier le restaurant CROUS Paris - Halles aux Farines pour sa gastronomie de bon marché. Contrairement au plat à 5 raviolis d'une certaine cantine palaisienne, il a eu la volonté de montrer sa qualité notamment en rapport quantité-prix. Sa générosité inouïe m'a été très précieuse.
+
+    Je tiens particulièrement à remercier les chercheuses italiennes du bureau à deux pas, pour leurs défilés de mode et leurs conversations charmantes bien que incompréhensibles.
+
+    Merci enfin à tous ceux qui ont croisé le chemin de mon stage, s'y sont intéressés et ont contribué à le faire avancer à divers titres, par leur curiosité et ou leur sympathie.
+

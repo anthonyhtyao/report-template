@@ -1,0 +1,51 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%  Modèle rapport         %%
+    %%  Annexe                 %%
+    %%  Version 2015.06.28     %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Châpeau
+\clearpage
+\appendixpage
+\addappheadtotoc
+\ifbool{rectoVerso}{\fancyhead[LE,RO]{\nomAnnexe}}{\fancyhead[RE,RO]{\nomAnnexe}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Configurations post-châpeau
+\titleformat{\subsection}[hang]{\large\bf}{\color{couleurSubsection}\Alph{subsection}}{5mm}{\color{couleurSubsection}} %% Pour le titre
+\renewcommand{\thesubsection}{\textcolor{couleurSubsection}{\Alph{subsection}}} %% Pour la table des matières
+\ifbool{compteurFigTabAvecSec}{ %% Pour les compteurs de figures et de tableaux
+	\numberwithin{figure}{subsection} %% Ajouter le numéro de la subsection pour les figures
+	%\renewcommand{\thefigure}{\Alph{subsection}.\arabic{figure}} %% Changement du style si nécessaire
+	\numberwithin{table}{subsection} %% Ajouter le numéro de la subsection pour les tableaux
+	%\renewcommand{\thetable}{\Alph{subsection}.\arabic{table}} %% Changement du style si nécessaire
+}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Texte
+
+
+%% A %%
+\subsection{Calcul bourrin}
+
+    \begin{table}[!htb]
+        \centering \begin{tabular}{|ccc|}
+            \hline
+            A & B & C \\
+            \hline
+            data & data & data \\
+            data & data & data \\
+            data & data & data \\
+            \hline
+        \end{tabular}
+        \caption{Légende}
+        \label{etiquette3}
+    \end{table}
+
+    Voici des exemples:
+    \begin{itemize}
+        \item ex1;
+        \item ex2.
+    \end{itemize}
+
+    \vspace*{1ex}
+    Paragraphe.
+    
+    

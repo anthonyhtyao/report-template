@@ -1,0 +1,202 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%  Math_Linc.sty       %%
+    %%  Chieh-An Lin        %%
+    %%  Version 2016.03.07  %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+
+\ProvidesPackage{Math_Linc}
+
+\newif\if@AA     \@AAfalse
+
+\DeclareOption{AA}{\@AAtrue}
+\DeclareOption*{} %% Do nothing if option is unknown
+\ProcessOptions
+
+%% Indices de puissance %%
+\newcommand{\dix}[1]{10^{#1}}
+\newcommand{\dixd}[1]{\cdot10^{#1}}
+\newcommand{\dixx}[1]{\times10^{#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\invSq}{^{-2}}
+\newcommand{\invCb}{^{-3}}
+\newcommand{\upp}[1]{^{(#1)}}
+
+%% Maths diverses %%
+\DeclareMathOperator*{\arsinh}{arsinh}
+\DeclareMathOperator*{\arcosh}{arcosh}
+\DeclareMathOperator*{\artanh}{artanh}
+\DeclareMathOperator*{\cov}{cov}
+\DeclareMathOperator*{\median}{median}
+\DeclareMathOperator*{\pdf}{pdf}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\vectU}[1]{\hat{\boldsymbol{#1}}}
+
+%% Expression courante en WL %%
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\betaNFW}{\beta_\mathrm{NFW}}
+\newcommand{\bJ}{\boldsymbol{J}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bpi}{\boldsymbol{\pi}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bxi}{\boldsymbol{\xi}}
+\newcommand{\bXi}{\boldsymbol{\Xi}}
+\newcommand{\cNFW}{c_\mathrm{NFW}}
+\newcommand{\DCSE}{\Delta\Sigma_8}
+\newcommand{\DL}{D_\ell}
+\newcommand{\DLs}{D_{\ell\mathrm{s}}}
+\newcommand{\DS}{D_\mathrm{s}}
+\newcommand{\lessM}{\mathrm{<}M}
+\newcommand{\LCDM}{\Lambda\mathrm{CDM}}
+\newcommand{\Like}{\mathcal{L}}
+\newcommand{\OmegaB}{\Omega_\mathrm{b}}
+\newcommand{\OmegaDe}{\Omega_\mathrm{de}}
+\newcommand{\OmegaL}{\Omega_\Lambda}
+\newcommand{\OmegaM}{\Omega_\mathrm{m}}
+\newcommand{\sigEig}{\sigma_8}
+\newcommand{\src}{^{(\mathrm{s})}}
+\newcommand{\wZero}{w_0^\mathrm{de}}
+
+%% Romanisation des unités %%
+\if@AA
+	\renewcommand{\arcmin}{\text{arcmin}}
+	\renewcommand{\arcsec}{\text{arcsec}}
+\else
+	\newcommand{\arcmin}{\text{arcmin}}
+	\newcommand{\arcsec}{\text{arcsec}}
+\fi
+\renewcommand{\deg}{\text{deg}}
+\newcommand{\Mpc}{\text{Mpc}}
+\newcommand{\Msol}{M_\odot}
+\newcommand{\parsec}{\text{pc}}
+
+%% Romanisation des mots %%
+\newcommand{\ABC}{\mathrm{ABC}}
+\newcommand{\ap}{\mathrm{ap}}
+\newcommand{\cg}{\mathrm{cg}}
+\newcommand{\cc}{\mathrm{cc}}
+\newcommand{\copula}{\mathrm{copula}}
+\newcommand{\crit}{\mathrm{crit}}
+\newcommand{\de}{\mathrm{de}}
+\newcommand{\gala}{\mathrm{gal}}
+\newcommand{\halo}{\mathrm{halo}}
+\newcommand{\inp}{\mathrm{in}}
+%% \ker is already defined, use $_{\ker}$
+\newcommand{\lin}{\mathrm{lin}}
+\newcommand{\los}{\mathrm{los}}
+\newcommand{\maxx}{\mathrm{max}}
+\newcommand{\minn}{\mathrm{min}}
+\newcommand{\model}{\mathrm{mod}}
+\newcommand{\noise}{\mathrm{noise}}
+\newcommand{\peak}{\mathrm{peak}}
+\newcommand{\pix}{\mathrm{pix}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\obs}{\mathrm{obs}}
+\newcommand{\svg}{\mathrm{svg}}
+\newcommand{\tot}{\mathrm{tot}}
+\newcommand{\true}{\mathrm{true}}
+\newcommand{\vc}{\mathrm{vc}}
+\newcommand{\vg}{\mathrm{vg}}
+\newcommand{\vir}{\mathrm{vir}}
+\newcommand{\variant}{\mathrm{variant}}
+
+%% Romanisation des lettres %%
+\newcommand{\rma}{\mathrm{a}}   \newcommand{\rmn}{\mathrm{n}}
+\newcommand{\rmb}{\mathrm{b}}   \newcommand{\rmo}{\mathrm{o}}
+\newcommand{\rmc}{\mathrm{c}}   \newcommand{\rmp}{\mathrm{p}}
+\newcommand{\rmd}{\mathrm{d}}   \newcommand{\rmq}{\mathrm{q}}
+\newcommand{\rme}{\mathrm{e}}   \newcommand{\rmr}{\mathrm{r}}
+\newcommand{\rmf}{\mathrm{f}}   \newcommand{\rms}{\mathrm{s}}
+\newcommand{\rmg}{\mathrm{g}}   \newcommand{\rmt}{\mathrm{t}}
+\newcommand{\rmh}{\mathrm{h}}   \newcommand{\rmu}{\mathrm{u}}
+\newcommand{\rmi}{\mathrm{i}}   \newcommand{\rmv}{\mathrm{v}}
+\newcommand{\rmj}{\mathrm{j}}   \newcommand{\rmw}{\mathrm{w}}
+\newcommand{\rmk}{\mathrm{k}}   \newcommand{\rmx}{\mathrm{x}}
+\newcommand{\rml}{\mathrm{l}}   \newcommand{\rmy}{\mathrm{y}}
+\newcommand{\rmm}{\mathrm{m}}   \newcommand{\rmz}{\mathrm{z}}
+
+\newcommand{\rmA}{\mathrm{A}}   \newcommand{\rmN}{\mathrm{N}}
+\newcommand{\rmB}{\mathrm{B}}   \newcommand{\rmO}{\mathrm{O}}
+\newcommand{\rmC}{\mathrm{C}}   \newcommand{\rmP}{\mathrm{P}}
+\newcommand{\rmD}{\mathrm{D}}   \newcommand{\rmQ}{\mathrm{Q}}
+\newcommand{\rmE}{\mathrm{E}}   \newcommand{\rmR}{\mathrm{R}}
+\newcommand{\rmF}{\mathrm{F}}   \newcommand{\rmS}{\mathrm{S}}
+\newcommand{\rmG}{\mathrm{G}}   \newcommand{\rmT}{\mathrm{T}}
+\newcommand{\rmH}{\mathrm{H}}   \newcommand{\rmU}{\mathrm{U}}
+\newcommand{\rmI}{\mathrm{I}}   \newcommand{\rmV}{\mathrm{V}}
+\newcommand{\rmJ}{\mathrm{J}}   \newcommand{\rmW}{\mathrm{W}}
+\newcommand{\rmK}{\mathrm{K}}   \newcommand{\rmX}{\mathrm{X}}
+\newcommand{\rmL}{\mathrm{L}}   \newcommand{\rmY}{\mathrm{Y}}
+\newcommand{\rmM}{\mathrm{M}}   \newcommand{\rmZ}{\mathrm{Z}}
+
+
+%% Abréviation des journaux %%
+\let\jnl@style=\rm
+\def\ref@jnl#1{{\jnl@style#1}}
+
+\def\aj{AJ}                                 %% Astronomical Journal
+\def\actaa{Acta Astron.}                    %% Acta Astronomica
+\def\araa{ARA\&A}                           %% Annual Review of Astronomy and Astrophysics
+\def\ao{Appl.~Opt.}                         %% Applied Optics
+\def\apj{ApJ}                               %% Astrophysical Journal
+\def\apjl{ApJ}                              %% Astrophysical Journal, Letters
+\def\apjs{ApJS}                             %% Astrophysical Journal, Supplement
+\def\apss{Ap\&SS}                           %% Astrophysics and Space Science
+\def\aplett{Astrophys.~Lett.}               %% Astrophysics Letters
+\def\apspr{Astrophys.~Space~Phys.~Res.}     %% Astrophysics Space Physics Research
+\def\aap{A\&A}                              %% Astronomy and Astrophysics
+\def\aapr{A\&A~Rev.}                        %% Astronomy and Astrophysics Reviews
+\def\aaps{A\&AS}                            %% Astronomy and Astrophysics, Supplement
+\def\azh{AZh}                               %% Astronomicheskii Zhurnal
+\def\baas{BAAS}                             %% Bulletin of the American Astronomical Society
+\def\bac{Bull. astr. Inst. Czechosl.}       %% Bulletin of the Astronomical Institutes of Czechoslovakia 
+\def\bain{Bull.~Astron.~Inst.~Netherlands}  %% Bulletin of the Astronomical Institutes of the Netherlands
+\def\caa{Chinese Astron. Astrophys.}        %% Chinese Astronomy and Astrophysics
+\def\cjaa{Chinese J. Astron. Astrophys.}    %% Chinese Journal of Astronomy and Astrophysics
+\def\fcp{Fund.~Cosmic~Phys.}                %% Fundamental Cosmic Physics
+\def\gca{Geochim.~Cosmochim.~Acta}          %% Geochimica Cosmochimica Acta
+\def\grl{Geophys.~Res.~Lett.}               %% Geophysics Research Letters
+\def\icarus{Icarus}                         %% Icarus
+\def\iaucirc{IAU~Circ.}                     %% International Astronomical Union Cirulars
+\def\jcp{J.~Chem.~Phys.}                    %% Journal of Chemical Physics
+\def\jcap{J. Cosmology Astropart. Phys.}    %% Journal of Cosmology and Astroparticle Physics
+\def\jgr{J.~Geophys.~Res.}                  %% Journal of Geophysics Research
+\def\jqsrt{J.~Quant.~Spec.~Radiat.~Transf.} %% Journal of Quantitiative Spectroscopy and Radiative Transfer
+\def\jrasc{JRASC}                           %% Journal of the Royal Astronomical Society of Canada
+\def\memras{MmRAS}                          %% Memoirs of the Royal Astronomical Society
+\def\memsai{Mem.~Soc.~Astron.~Italiana}     %% Memorie della Societa Astronomica Italiana
+\def\mnras{MNRAS}                           %% Monthly Notices of the Royal Astronomical Society
+\def\nat{Nature}                            %% Nature
+\def\na{New A}                              %% New Astronomy
+\def\nar{New A Rev.}                        %% New Astronomy Review
+\def\nphysa{Nucl.~Phys.~A}                  %% Nuclear Physics A
+\def\physscr{Phys.~Scr}                     %% Physica Scripta
+\def\pra{Phys.~Rev.~A}                      %% Physical Review A: General Physics
+\def\prb{Phys.~Rev.~B}                      %% Physical Review B: Solid State
+\def\prc{Phys.~Rev.~C}                      %% Physical Review C
+\def\prd{Phys.~Rev.~D}                      %% Physical Review D
+\def\pre{Phys.~Rev.~E}                      %% Physical Review E
+\def\prl{Phys.~Rev.~Lett.}                  %% Physical Review Letters
+\def\physrep{Phys.~Rep.}                    %% Physics Reports
+\def\planss{Planet.~Space~Sci.}             %% Planetary Space Science
+\def\procspie{Proc.~SPIE}                   %% Proceedings of the SPIE
+\def\pasa{PASA}                             %% Publications of the Astronomical Society of Australia
+\def\pasj{PASJ}                             %% Publications of the Astronomical Society of Japan
+\def\pasp{PASP}                             %% Publications of the Astronomical Society of the Pacific
+\def\qjras{QJRAS}                           %% Quarterly Journal of the Royal Astronomical Society
+\def\rmxaa{Rev. Mexicana Astron. Astrofis.} %% Revista Mexicana de Astronomia y Astrofisica
+\def\skytel{S\&T}                           %% Sky and Telescope
+\def\solphys{Sol.~Phys.}                    %% Solar Physics
+\def\sovast{Soviet~Ast.}                    %% Soviet Astronomy
+\def\ssr{Space~Sci.~Rev.}                   %% Space Science Reviews
+\def\zap{ZAp}                               %% Zeitschrift fuer Astrophysik
+
+\let\astap=\aap
+\let\apjlett=\apjl
+\let\apjsupp=\apjs
+\let\applopt=\ao
+

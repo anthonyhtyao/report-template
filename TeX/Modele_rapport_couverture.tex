@@ -1,0 +1,48 @@
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%  Modèle rapport         %%
+    %%  Couverture             %%
+    %%  Version 2015.06.28     %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\ifnumequal{\entreeCouverture}{1}{
+	\begin{titlepage}
+	\thispagestyle{empty}
+
+    	\raggedright
+    	\includegraphics[height=0.2\textwidth]{logo.png}
+        \hfill
+    	\begin{minipage}[b][0.2\textwidth][t]{0.5\textwidth}
+        	\raggedleft
+        	\today
+    	\end{minipage}\\
+        	\vspace*{\stretch{1}}
+    	\sc \large \centering
+%    	Rapport de \{Nom du stage\}\\
+    	\bf \LARGE
+    	\rule[1ex]{\textwidth}{0.5pt}\\
+    	\titreRapportCouverture\\
+    	\rule[1ex]{\textwidth}{0.5pt}\\[2ex]
+    	\rm \Large
+    	linc and htyao\\
+    	%\large \today
+        	\vspace*{\stretch{1}}
+    	
+        	\vspace*{\stretch{1}}
+    	\rm \normalsize \raggedright
+    	Version : 1.0\\
+%    	Dates : Date 1 -- Date 2 (durée)\\
+%    	Nom de l'organisme : Nom du labo / Num de l'entreprise
+
+	\end{titlepage}
+}{}
+
+\ifnumequal{\entreeCouverture}{2}{
+	\begin{titlepage} %% Importer une image A4 pour la couverture
+	\thispagestyle{empty}
+	\changepage{6.2cm}{}{}{-3.3cm}{}{-3cm}{}{}{}
+	%\includegraphics[height=\textheight]{En_attendant_une_figure.jpg}
+	\end{titlepage}
+	%\changepage{}{}{}{}{}{}{}{}{}
+}{}
+

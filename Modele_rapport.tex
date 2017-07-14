@@ -1,0 +1,221 @@
+    %%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%  Modèle rapport      %%
+    %%  Chieh-An Lin        %%
+    %%  Version 2016.08.08  %%
+    %%  Maintained by       %%
+    %%  htyao               %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[11pt, twoside, a4paper]{report}
+% Use article, if chapter is unneeded
+%\documentclass[11pt, twoside, a4paper]{article}
+
+%% Booléans %%
+\usepackage{etoolbox, ifthen}
+\newbool{numeroIntroConclu}
+\newbool{numeroRemerci}
+\newbool{nouvellePage}
+\newbool{rectoVerso}
+\newbool{compteurFigTabAvecSec}
+
+%% Configurations %%
+\setbool{numeroIntroConclu}{false} %% true = avec ; false = sans
+\setbool{numeroRemerci}{false} %% true = avec ; false = sans
+\setbool{nouvellePage}{false} %% true = nouvelle page pour chaque section ; false = continue
+\setbool{rectoVerso}{false} %% true = recto-verso ; false = recto
+\setbool{compteurFigTabAvecSec}{false} %% true = avec ; false = sans
+\numdef{\entreeCouverture}{1} %% 1 = texte ; 2 = image A4
+\numdef{\entreeBiblio}{1} %% 1 = bibTeX ; 2 = à la main
+\title{Report} % Unneeded 
+%% Titre et noms des sections %%
+\newcommand{\titreRapport}{Report}
+\newcommand{\titreRapportCouverture}{\titreRapport} %% Pour un titre avec un changement de ligne éventuel
+%\newcommand{\nomResume}{Résumé}
+\newcommand{\nomIntro}{Introduction}
+\newcommand{\nomTDM}{Contents}
+\newcommand{\nomResume}{Resume}
+\newcommand{\nomConclu}{Conclusion}
+\newcommand{\nomRemerci}{Remerciements}
+\newcommand{\nomAnnexe}{Annexe}
+\newcommand{\nomBiblio}{Bibliography} %Références
+
+%% Taille des feuilles %%                                                                     %% bottom - footskip = 22mm
+%\usepackage[paper=a4paper, left=30mm, right=30mm, top=35mm, headheight=5mm, headsep=5mm, bottom=35mm, footskip=13mm]{geometry} %% Petit
+\usepackage[paper=a4paper, left=27mm, right=27mm, top=32mm, headheight=5mm, headsep=5mm, bottom=32mm, footskip=10mm]{geometry} %% Intermédiaire
+%\usepackage[paper=a4paper, left=25mm, right=25mm, top=30mm, headheight=5mm, headsep=5mm, bottom=30mm, footskip=8mm]{geometry} %% Grand
+%\usepackage[paper=a4paper, left=23mm, right=23mm, top=28mm, headheight=5mm, headsep=5mm, bottom=28mm, footskip=6mm]{geometry} %% Très serré
+\usepackage{chngpage}
+
+%% Langue et police %%
+\usepackage[british,UKenglish,USenglish,english,american]{babel}
+%%\usepackage[francais]{babel} %[english]
+%\usepackage[super]{nth}
+\usepackage{lmodern}
+\renewcommand{\sfdefault}{phv}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Tête des pages %%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markboth{Partie \Roman{section} --- #1}{Partie \Roman{section} --- #1}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\ifbool{rectoVerso}{
+    \fancyhead[LE,RO]{\leftmark}
+    \fancyfoot[RE,LO]{\titreRapport}
+    \fancyfoot[LE,RO]{\thepage}
+}{
+    \fancyhead[RE,RO]{\leftmark}
+    \fancyhead[LE,LO]{linc \& htyao}
+    \fancyfoot[LE,LO]{\titreRapport}
+    \fancyfoot[RE,RO]{\thepage}
+}
+
+%% Couleur %%
+\usepackage{xcolor}
+\definecolor{couleurSection}      {rgb}{0.10, 0.20, 0.35}
+\definecolor{couleurSubsection}   {rgb}{0.15, 0.40, 0.05}
+\definecolor{couleurSubsubsection}{rgb}{0.50, 0.15, 0.10}
+
+%% Table des matières %%
+\usepackage{titletoc}
+\usepackage[normalem]{ulem}
+\newcommand{\souligner}{}%\bgroup\markoverwith{\color{couleurSection}{\rule[-3pt]{2pt}{0.4pt}}}\ULon} %% Pour souligner la table des matières
+
+\titlecontents*{chapter}[0mm]{\addvspace{1em}}{\bfseries\chaptername\ \thecontentslabel\quad}{}{}
+\titlecontents{section}[8mm]{\bf}{\color{couleurSection}\souligner{\contentslabel{8mm}}\souligner}{\color{couleurSection}\hspace*{-8mm}\souligner}
+    {\color{couleurSection}{\souligner{\hfill\contentspage}}}
+\titlecontents{subsection}[16mm]{\bf}{\color{couleurSubsection}\contentslabel{8mm}}{}{\color{couleurSubsection}{\hfill\contentspage}}
+\titlecontents{subsubsection}[26mm]{\bf}{\color{couleurSubsubsection}\contentslabel{10mm}}{}{\color{couleurSubsubsection}{\hfill\content	spage}}
+\setcounter{tocdepth}{2}
+
+%% Sections %%
+\usepackage{titlesec}
+\titlespacing{\subsection}{2em}{1ex}{1ex}
+\titlespacing{\subsubsection}{4em}{1ex}{1ex}
+\renewcommand{\thesection}{\textcolor{couleurSection}{\Roman{section}}}
+\renewcommand{\thesubsection}{\textcolor{couleurSubsection}{\arabic{subsection}}}
+\renewcommand{\thesubsubsection}{\textcolor{couleurSubsubsection}{(\alph{subsubsection})}}
+% Chapter style is still experimental
+\titleformat{\chapter}[hang]{\Large\bf}{Chapter \Roman{chapter}}{5mm}{}
+\titleformat{\section}[hang]{\Large\bf}{\color{couleurSection}\Roman{section}}{5mm}{\color{couleurSection}}
+\titleformat{\subsection}[hang]{\large\bf}{\color{couleurSubsection}\arabic{subsection}}{5mm}{\color{couleurSubsection}}
+\titleformat{\subsubsection}[hang]{\bf}{\color{couleurSubsubsection}(\alph{subsubsection})}{5mm}{\color{couleurSubsubsection}}
+
+%% Texte (1ère partie) %%
+\parindent=2em
+\parskip=1ex
+\pagenumbering{arabic}
+\usepackage{soul}
+%\urlstyle{sf}
+
+%% Annexe %%
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{\color{couleurSection}\Large \nomAnnexe}
+\renewcommand{\appendixtocname}{\color{couleurSection} \nomAnnexe}
+\newcommand{\ann}[1]{Annexe \ref{#1}}
+
+%% Bibliographie %%
+\usepackage{hyperref}
+\usepackage[sort&compress]{natbib} %% No [sort&compress] for author-year style
+\bibliographystyle{plainnat}
+\bibpunct{[}{]}{,}{n}{}{,} %% n = number
+%\bibpunct{(}{)}{;}{a}{}{,} %% a = author-year
+\setlength{\bibsep}{0.5ex} %% Réduire les interlignes dans la bibliogaphie
+\renewcommand{\bibfont}{\small} %% Réduire la taille de police de la bibliogaphie, essayer newcommand si bugger
+
+%% Graphique et tableau %%
+\usepackage[font=footnotesize, labelfont=sc]{caption}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[capposition=bottom]{floatrow}
+\usepackage{array, amsmath}
+\extrarowheight=2pt %% Espace supplémentaire pour les tableaux pour esthétique
+%\graphicspath{{Figures/}} %% Chemins des figures
+\ifbool{compteurFigTabAvecSec}{
+	\numberwithin{figure}{section} %% Ajouter le numéro de la section pour les figures
+	%\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}} %% Changement du style si nécessaire
+	\numberwithin{table}{section} %% Ajouter le numéro de la section pour les tableaux
+	%\renewcommand{\thetable}{\arabic{table}.\arabic{table}} %% Changement du style si nécessaire
+}{}
+
+%% Maths et sciences %%
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage[squaren, Gray, cdot]{SIunits}
+\usepackage{bbm}
+\usepackage{listings}
+\lstset{numbers=left,xleftmargin=2em,frame=single,framexleftmargin=2em,numberstyle=\color{yellow},escapeinside=||}
+\let\origthelstnumber\thelstnumber
+\makeatletter
+\newcommand*\Suppressnumber{%
+  \lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\relax%
+     \advance\c@lstnumber-\@ne\relax%
+    }%
+}
+\newcommand*\Reactivatenumber[1]{%
+  \setcounter{lstnumber}{\numexpr#1-1\relax}
+  \lst@AddToHook{OnNewLine}{%
+   \let\thelstnumber\origthelstnumber%
+   \refstepcounter{lstnumber}
+  }%
+}
+\makeatother
+\lstdefinestyle{DOS}
+{
+    backgroundcolor=\color{black},
+    basicstyle=\scriptsize\color{white}\ttfamily
+}
+\usepackage[os=win]{menukeys}
+\usepackage[]{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{indentfirst}
+
+%\renewcommand{\theequation}{\arabic{section}.\arabic{equation}} %% Définir la forme du compteur pour les équations
+%\numberwithin{equation}{section} %% Ajouter le numéro de la section pour les équations
+
+%% Texte (2e partie) %%
+\renewcommand{\thefootnote}{$\sharp$\arabic{footnote}}
+\newcommand{\for}[1]{Eq.~(\ref{#1})}
+\newcommand{\fig}[1]{Fig.~\ref{#1}}
+\newcommand{\figFull}[1]{Figure~\ref{#1}}
+%\newcommand{\tab}[1]{Table~\ref{#1}}
+\newcommand{\sect}[1]{Sect.~\ref{#1}}
+\newcommand{\app}[1]{Append.~\ref{#1}}
+\newcommand{\pr}[1]{{\it #1}}
+
+%% Macros perso %%
+\usepackage{Math_Linc}
+
+
+\begin{document}
+
+
+\iffalse\fi
+\input{TeX/Modele_rapport_couverture}
+
+\input{TeX/Modele_rapport_resume}
+
+\input{TeX/Modele_rapport_table_des_matieres}
+
+\input{TeX/Modele_rapport_introduction}
+
+\input{TeX/Modele_rapport_developpement}
+
+\input{TeX/Modele_rapport_conclusion}
+
+\input{TeX/Modele_rapport_remerciement}
+
+\input{TeX/Modele_rapport_annexe}
+
+
+\input{TeX/Modele_rapport_bibliographie}
+
+\iffalse\fi
+
+
+\end{document}
+
